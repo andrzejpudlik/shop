@@ -5,7 +5,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { mobile } from '../../responsive';
 
 const Container = styled.div`
-  display: ${(props) => props.visibility ? 'flex' : 'none'};
+  display: ${(props) => props.visible ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
   height: 40px;
@@ -32,7 +32,7 @@ const Button = styled.div`
 const Announcement = () => {
   const [visibility, setVisibility] = useState(true);
   return (
-    <Container visibility={visibility}>
+    <Container visible={visibility}>
       <Text>Super Deal! Free Shipping on Orders Over $50</Text>
       <Button>
         <CloseOutlinedIcon 
