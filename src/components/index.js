@@ -4,6 +4,7 @@ import Slider from './Slider/Slider';
 import Categories from './Categories/Categories';
 import Products from './Products/Products';
 import Newsletter from './Newsletter/Newsletter';
+import Footer from './Footer/Footer';
 
 export {
   Announcement,
@@ -11,5 +12,6 @@ export {
   Slider,
   Categories,
   Products,
-  Newsletter
+  Newsletter,
+  Footer,
 };
