@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Announcement, Navbar, Slider, Categories, Products } from '../../components';
+import { Announcement, Navbar, Slider, Categories, Products, Newsletter } from '../../components';
 
 const HomePage = () => {
   return (
@@ -10,6 +10,7 @@ const HomePage = () => {
       <Slider />
       <Categories />
       <Products />
+      <Newsletter />
     </div>
   );
 };
