@@ -48,16 +48,19 @@ export const categories = [
     id: 1,
     img: category1,
     title: "SPORT STYLE",
+    category: 'sport',
   },
   {
     id: 2,
     img: category2,
     title: "LIGHT JACKETS",
+    category: 'jackets',
   },
   {
     id: 3,
     img: category3,
     title: "CASUAL SHIRT",
+    category: 'shirts',
   },
 ];
 

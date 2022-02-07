@@ -13,7 +13,9 @@ import payment from '../../assets/images/payment.png';
 
 const Container = styled.div`
   display: flex;
-  ${mobile({ flexDirection: "column" })}
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 const Left = styled.div`

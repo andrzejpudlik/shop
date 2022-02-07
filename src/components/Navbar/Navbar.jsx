@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -66,7 +66,6 @@ const Right = styled.div`
   align-items: center;
   justify-content: flex-end;
   ${smallScreen({ width: '20%' })};
-  /* ${mobile({ flex: 2, justifyContent: "center" })} */
 `;
 
 const MenuItem = styled.div`
@@ -79,7 +78,6 @@ const MenuItem = styled.div`
   }
   ${mediumScreen({ margin: '0 0.8rem' })}
   ${smallScreen({ margin: '1.5rem 0.8rem' })}
-  /* ${mobile({ fontSize: "12px", marginLeft: "10px" })} */
 `;
 
 const Links = styled.div`
@@ -132,12 +130,18 @@ const Navbar = () => {
       </Center>
       <Right>
         <Links>
-          <MenuItem>Home</MenuItem>
+          <Link to='/'>
+            <MenuItem>Home</MenuItem>
+          </Link>
           <MenuItem>Shop</MenuItem>
           <MenuItem>About</MenuItem>
           <MenuItem>Contact</MenuItem>
-          <MenuItem>Register</MenuItem>
-          <MenuItem>Sign In</MenuItem>
+          <Link to='/register'>
+            <MenuItem>Register</MenuItem>
+          </Link>
+          <Link to='/login'>
+            <MenuItem>Sign In</MenuItem>
+          </Link>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />

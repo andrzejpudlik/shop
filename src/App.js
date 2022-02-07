@@ -9,6 +9,8 @@ import {
   HomePage, 
   Login,
   Register,
+  ProductListFiltered,
+  Product,
 } from './pages';
 
 const App = () => {
@@ -18,6 +20,8 @@ const App = () => {
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/products/:category' element={<ProductListFiltered />} />
+        <Route path='/product/:id' element={<Product />} />
       </Routes>
     </Router>
   )

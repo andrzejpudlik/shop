@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   FavoriteBorderOutlined,
   SearchOutlined,
@@ -38,7 +39,7 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   height: 90%;
-  border-radius: 50%;
+  border-radius: 20%;
   background-color: white;
   position: absolute;
 `;
@@ -84,14 +85,16 @@ const Product = ({ item }) => {
       <Wrapper>
         <Image src={item.img} />
         <Text>{item.title}</Text>
-        <Price>{item.price}</Price>
+        <Price>{`$${item.price}`}</Price>
       </Wrapper>
       <Info>
         <Icon>
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
-          <SearchOutlined />
+          <Link to={`/product/${item._id}`}>
+            <SearchOutlined />
+          </Link>
         </Icon>
         <Icon>
           <FavoriteBorderOutlined />
