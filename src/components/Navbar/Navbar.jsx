@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/userRedux';
 import Badge from '@mui/material/Badge';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -117,6 +119,16 @@ const ButtonClose = styled.div`
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user.currentUser);
+  const quantity = useSelector(state => state.cart.quantity);
+
+  const handleClick = e => {
+    e.preventDefault();
+    dispatch(logout());
+  };
+
   return (
     <Container>
       <Left>
@@ -136,17 +148,28 @@ const Navbar = () => {
           <MenuItem>Shop</MenuItem>
           <MenuItem>About</MenuItem>
           <MenuItem>Contact</MenuItem>
-          <Link to='/register'>
-            <MenuItem>Register</MenuItem>
+          {!user ? (
+            <>
+              <Link to='/register'>
+                <MenuItem>Register</MenuItem>
+              </Link>
+              <Link to='/login'>
+                <MenuItem>Sign In</MenuItem>
+              </Link>
+            </>
+          ) : (
+            <>
+              <MenuItem>Profile</MenuItem>
+              <MenuItem onClick={handleClick}>Log out</MenuItem>
+            </>
+          )}
+          <Link to='/cart'>
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
           </Link>
-          <Link to='/login'>
-            <MenuItem>Sign In</MenuItem>
-          </Link>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
         </Links>
         <Smallscreen>
           <MenuIcon 
@@ -162,17 +185,34 @@ const Navbar = () => {
             />
           </ButtonClose>
 
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
-          <MenuItem>Home</MenuItem>
+          <Link to='/cart'>
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
+          <Link to='/'>
+            <MenuItem>Home</MenuItem>
+          </Link>
           <MenuItem>Shop</MenuItem>
           <MenuItem>About</MenuItem>
           <MenuItem>Contact</MenuItem>
-          <MenuItem>Sign In</MenuItem>
-          <MenuItem>Register</MenuItem>
+          {!user ? (
+            <>
+              <Link to='/register'>
+                <MenuItem>Register</MenuItem>
+              </Link>
+              <Link to='/login'>
+                <MenuItem>Sign In</MenuItem>
+              </Link>
+            </>
+          ) : (
+            <>
+              <MenuItem>Profile</MenuItem>
+              <MenuItem onClick={handleClick}>Log out</MenuItem>
+            </>
+          )}
         </Wrapper>
       )}
     </Container>

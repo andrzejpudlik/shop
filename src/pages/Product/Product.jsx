@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Add, Remove } from '@mui/icons-material';
 import styled from 'styled-components';
 
+import { addProduct } from '../../redux/cartRedux';
 import { publicRequest } from '../../constants/requestMethods';
 import { Navbar, Newsletter, Footer } from '../../components';
 import { smallScreen, mobile } from '../../responsive';
@@ -140,6 +142,8 @@ const Product = () => {
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
 
+  const dispatch = useDispatch();
+
   const location = useLocation();
   const id = location.pathname.split('/')[2];
 
@@ -161,6 +165,12 @@ const Product = () => {
     } else {
       quantity > 1 && setQuantity(quantity - 1);
     }
+  }
+
+  const handleAddToCart = () => {
+    dispatch(
+      addProduct({ ...product, quantity, color, size })
+    );
   }
 
   return (
@@ -202,7 +212,7 @@ const Product = () => {
                 style={{ cursor: 'pointer' }}
               />
             </AmountContainer>
-            <Button>Add To Cart</Button>
+            <Button onClick={handleAddToCart}>Add To Cart</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
